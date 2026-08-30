@@ -14,11 +14,21 @@ const validateFn = ajv.compile(schema);
 
 function toIssues(errors: ErrorObject[] | null | undefined): ValidationIssue[] {
   if (!errors) return [];
-  return errors.map((err) => ({
-    path: err.instancePath || "/",
-    keyword: err.keyword,
-    message: `${err.instancePath || "(root)"} ${err.message ?? "is invalid"}`.trim(),
-  }));
+  return errors.map((err) => {
+    // Ajv reports "required" errors on the parent object's instancePath
+    // (e.g. "/roles/0") with the missing key in err.params.missingProperty,
+    // not in instancePath itself. Append it so `path` always points at the
+    // actual offending field, matching the ValidationIssue.path contract.
+    const path =
+      err.keyword === "required"
+        ? `${err.instancePath}/${(err.params as { missingProperty: string }).missingProperty}`
+        : err.instancePath || "/";
+    return {
+      path,
+      keyword: err.keyword,
+      message: `${path} ${err.message ?? "is invalid"}`.trim(),
+    };
+  });
 }
 
 /**

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CV Builder — Slice 1: Master Experience Data Model & Local Store
 
 This is Slice 1 of 4 only. It provides:
@@ -45,3 +46,6 @@ const profile = await loadProfile("./data/master-profile.json");
 await saveProfile("./data/master-profile.json", profile);
 await exportProfile(profile, "./data/backups/master-profile.export.json");
 ```
+=======
+# cv-builder
+>>>>>>> afe08702683aa92e0c42b3cbd0055aed11a2541f

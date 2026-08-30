@@ -6,7 +6,8 @@ import type { MasterProfile } from "./types.ts";
 /**
  * Reads a JSON file from disk and validates it as a MasterProfile.
  * Throws ProfileValidationError if the contents don't match the schema,
- * or a SyntaxError if the file isn't valid JSON.
+ * a SyntaxError if the file isn't valid JSON, or a raw Node.js fs error
+ * (e.g. ENOENT) if the file doesn't exist or can't be read.
  */
 export async function loadProfile(filePath: string): Promise<MasterProfile> {
   const raw = await readFile(filePath, "utf-8");

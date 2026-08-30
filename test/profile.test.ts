@@ -6,7 +6,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { validateProfile } from "../src/validate.ts";
-import { loadProfile, saveProfile } from "../src/repository.ts";
+import { exportProfile, loadProfile, saveProfile } from "../src/repository.ts";
 import { ProfileValidationError } from "../src/errors.ts";
 import type { MasterProfile } from "../src/types.ts";
 
@@ -82,7 +82,8 @@ test("missing role title throws a structured validation error", () => {
     assert.ok(err.issues.length > 0);
     assert.ok(
       err.issues.some(
-        (issue) => issue.keyword === "required" && issue.path === "/roles/0",
+        (issue) =>
+          issue.keyword === "required" && issue.path === "/roles/0/title",
       ),
     );
   }
@@ -100,7 +101,8 @@ test("missing role startDate throws a structured validation error", () => {
     assert.ok(err instanceof ProfileValidationError);
     assert.ok(
       err.issues.some(
-        (issue) => issue.keyword === "required" && issue.path === "/roles/0",
+        (issue) =>
+          issue.keyword === "required" && issue.path === "/roles/0/startDate",
       ),
     );
   }
@@ -119,7 +121,8 @@ test("missing achievement bulletPoint throws a structured validation error", () 
     assert.ok(
       err.issues.some(
         (issue) =>
-          issue.keyword === "required" && issue.path === "/roles/0/achievements/0",
+          issue.keyword === "required" &&
+          issue.path === "/roles/0/achievements/0/bulletPoint",
       ),
     );
   }
@@ -153,6 +156,21 @@ test("profile survives a save/load round trip without losing fields", async () =
     const original = loadFixtureRaw();
 
     await saveProfile(filePath, original);
+    const reloaded = await loadProfile(filePath);
+
+    assert.deepEqual(reloaded, original);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("profile survives an exportProfile/load round trip without losing fields", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "cv-builder-test-"));
+  const filePath = join(dir, "profile.export.json");
+  try {
+    const original = loadFixtureRaw();
+
+    await exportProfile(original, filePath);
     const reloaded = await loadProfile(filePath);
 
     assert.deepEqual(reloaded, original);

@@ -2,7 +2,11 @@
  * A single structured validation problem, one per failing schema rule.
  */
 export interface ValidationIssue {
-  /** JSON path to the offending field, e.g. "/roles/0/title". */
+  /**
+   * JSON path to the offending field, e.g. "/roles/0/title". Points at the
+   * field itself even when the failure is a missing required property
+   * (rather than at the parent object that is missing it).
+   */
   path: string;
   /** Machine-readable reason, e.g. "required", "minLength", "pattern". */
   keyword: string;

@@ -1,0 +1,21 @@
+{
+  "name": "cv-builder",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local-first master experience data store for CV Builder (Slice 1).",
+  "type": "module",
+  "engines": {
+    "node": ">=23.6.0"
+  },
+  "scripts": {
+    "test": "node --test test/**/*.test.ts",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}

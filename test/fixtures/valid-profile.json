@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "profileId": "profile-jane-doe",
+  "roles": [
+    {
+      "id": "role-1",
+      "title": "Senior Backend Engineer",
+      "organization": "Acme Corp",
+      "startDate": "2021-03",
+      "endDate": null,
+      "achievements": [
+        {
+          "id": "ach-1",
+          "bulletPoint": "Led migration of billing service to a new datastore.",
+          "metrics": [
+            { "id": "met-1", "label": "downtime reduction", "value": "40%" }
+          ]
+        },
+        {
+          "id": "ach-2",
+          "bulletPoint": "Mentored two junior engineers through promotion.",
+          "metrics": []
+        }
+      ]
+    },
+    {
+      "id": "role-2",
+      "title": "Software Engineer",
+      "organization": "Startup Inc",
+      "startDate": "2018-06",
+      "endDate": "2021-02",
+      "achievements": []
+    }
+  ],
+  "skills": [
+    { "id": "skill-1", "name": "TypeScript", "category": "Languages" },
+    { "id": "skill-2", "name": "PostgreSQL", "category": "Databases" }
+  ]
+}

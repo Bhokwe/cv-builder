@@ -1,0 +1,11 @@
+Senior Backend Engineer
+
+We are looking for a Senior Backend Engineer to join our platform team.
+
+Requirements:
+- 5+ years of experience with TypeScript
+- Hands-on experience with Node.js and PostgreSQL
+- Experience with Docker in production environments
+
+Nice to have:
+- Experience with Kubernetes

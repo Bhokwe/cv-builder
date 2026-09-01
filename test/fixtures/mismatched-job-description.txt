@@ -1,0 +1,9 @@
+Senior Data Scientist
+
+We are looking for a Senior Data Scientist to join our analytics team.
+
+Requirements:
+- 5+ years of experience with Python and machine learning
+- Deep knowledge of TensorFlow and PyTorch
+- Experience with Apache Spark and large-scale data pipelines
+- PhD in Statistics, Machine Learning, or a related field

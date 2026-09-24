@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0.0",
+  "profileId": "profile-tailoring-fixture",
+  "roles": [
+    {
+      "id": "role-irrelevant",
+      "title": "Junior Marketing Assistant",
+      "organization": "Legacy Co",
+      "startDate": "2015-01",
+      "endDate": "2016-01",
+      "achievements": [
+        {
+          "id": "ach-irrelevant-1",
+          "bulletPoint": "Coordinated marketing campaigns across social media channels.",
+          "metrics": []
+        }
+      ]
+    },
+    {
+      "id": "role-relevant",
+      "title": "Senior Backend Engineer",
+      "organization": "Acme Corp",
+      "startDate": "2021-03",
+      "endDate": null,
+      "achievements": [
+        {
+          "id": "ach-no-overlap",
+          "bulletPoint": "Organized quarterly team offsite events.",
+          "metrics": []
+        },
+        {
+          "id": "ach-overlap-1",
+          "bulletPoint": "Built REST APIs in TypeScript and Node.js for the checkout service.",
+          "metrics": []
+        },
+        {
+          "id": "ach-overlap-2",
+          "bulletPoint": "Migrated the primary database to PostgreSQL, improving query latency by 35%.",
+          "metrics": [
+            { "id": "met-1", "label": "query latency improvement", "value": "35%" }
+          ]
+        }
+      ]
+    }
+  ],
+  "skills": [
+    { "id": "skill-1", "name": "Marketing", "category": "Soft Skills" },
+    { "id": "skill-2", "name": "TypeScript", "category": "Languages" },
+    { "id": "skill-3", "name": "Node.js", "category": "Frameworks" },
+    { "id": "skill-4", "name": "PostgreSQL", "category": "Databases" }
+  ]
+}
